@@ -1,0 +1,25 @@
+ABOUT CULINARY TEXT-BASED-GAME
+    It is played by one player, it is used to test if the player knows the recipe for a particular food or snacks
+a player is allowed to choose what type of food/snacks he or she wishes to prepare,but before the player can get
+access to the kitchen store, the player has to get at least 3 ingredients correct for making what he/she wants to prepare 
+to avoid wastage of resources.
+As a player gets an ingredient right he/she scores one point otherwise zero is awarded.
+
+Dos and Don't of the GAME
+1. A player can only pick from the list of food/snacks given.
+2. A player is not allowed to repeat an ingredient otherwise zero score is awarded.
+
+HOW TO PLAY
+step 1: Enter your game name as required.
+step 2: Type what you wish to prepare, food or snacks.
+step 3: Type the name of the food/snacks you wish to prepare from the list displayed to you.
+step 4: You have the opportunity to input 5 ingredients for what you choose to prepare.
+
+
+
+
+***ISSUE I NEED HELP WITH
+    I wanted to avoid repitition of code by appending the list of recipe together but it was not possible because
+each snack/food has different ingredients even there are some similar ingredients.
+Please is there anyway to make the code shorter and provide the same result, that'll check for correct ingredients 
+seperately.
