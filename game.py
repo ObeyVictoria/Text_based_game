@@ -1,10 +1,48 @@
 #Name: Victoria
 #Text-based Culinary testing game
 
-"""
-ADD EFFECTS AND PLAY THE GAME
-"""
+#IMPORTING NECESSARY MODULES
+from tkinter import*
+import pygame
+import time
+#BACKGROUND MUSIC
+root = Tk()
+root.title('Culinary game sound player')
+ 
+root.geometry("400x200")
+ 
+pygame.mixer.init()# initialise the pygame
+ 
+def play():
+    pygame.mixer.music.load("music.mp3")
+    pygame.mixer.music.play(loops=-1)
+ 
+title=Label(root,text="CULINARY TEST",bd=5,relief=GROOVE,
+            font=("times new roman",18,"bold"),bg="white",fg="green")
+title.pack(side=TOP,fill=X)
+ 
+play_button = Button(root, text="Play Song", font=("Helvetica", 12), command=play)
+play_button.pack(pady=10)
 
+info=Label(root,text="Click on the button above to play song and continue the game by clicking on the exit button",
+           font=("times new roman",7,"bold")).pack(pady=5)
+info=Label(root,text="or you can just click the exit button if you  don't want background music",
+           font=("times new roman",7,"bold")).pack(pady=5)
+root.mainloop()
+
+#SCREEN SIZE
+"""screen = pygame.display.set_mode((800,600))
+background= pygame.image.load('kitchen.png')
+background = pygame.transform.scale(background,(800,600))
+mixer.init()
+mixer.music.load('music.mp3')
+mixer.music.play()
+#TITLE AND ICON
+pygame.display.set_caption("CULINARY SKILL TEST")
+icon = pygame.image.load('catering.png')
+pygame.display.set_icon(icon)"""
+
+#GREETINGS
 print("WELCOME TO THE KITCHEN")
 name= input("Enter your name: ")
 print("Hello " + str(name))
@@ -17,10 +55,10 @@ playerList = []
 def food():
     foodList = ["JOLLOF RICE", "JOLLOF SPAGHETTI", "YAM AND EGG SAUCE"]
     jRice = ["rice", "pepper", "salt", "tomatoes", "tomato paste", "onions", "spices", "seasoning", "broth"]
-    jSpag = ["spaghetti", "pepper", "salt", "spices", "tomato", "broth", "veggies", "onions", "seasoning"]
+    jSpag = ["spaghetti", "pepper", "salt", "spices", "tomatoes", "tomato paste",  "broth", "veggies", "onions", "seasoning"]
     yamSauce = ["yam", "pepper", "egg", "water", "salt", "sugar", "onions", "oil", "seasoning", "tomato"]
-    for idx, meal in enumerate(foodList):
-        print(idx,meal)
+    for meal in foodList:
+        print(meal)
     foodChoice = str(input("which of the meal above do you wish to prepare?: ").upper())
     if foodChoice in foodList:
 #Listing ingredients for J RICE
@@ -31,7 +69,7 @@ def food():
                 score = +1
             else:
                 playerList.append(recipe1)
-                score += 0
+                score = +0
             recipe2 = str(input("give me another main ingredient to prepare it: ").lower())
             if recipe2 in jRice and recipe2 not in playerList:
                 playerList.append(recipe2)
@@ -70,7 +108,7 @@ def food():
                 score = +1
             else:
                 playerList.append(recipe1)
-                score += 0
+                score = +0
             recipe2 = str(input("give me another main ingredient to prepare it: ").lower())
             if recipe2 in jSpag and recipe2 not in playerList:
                 playerList.append(recipe2)
@@ -109,7 +147,7 @@ def food():
                 score = +1
             else:
                 playerList.append(recipe1)
-                score += 0 
+                score = +0 
             recipe2 = str(input("give me another main ingredient to prepare it: ").lower())
             if recipe2 in yamSauce and recipe2 not in playerList:
                 playerList.append(recipe2)
@@ -140,7 +178,7 @@ def food():
                 playerList.append(recipe5)
                 score += 0       
                 winORlose(score)
-    else: #validation check in concordance to food list
+    else: #input check 
         print("please input a food from the list displayed")
         food()
 #SNACKS FUNCTION
@@ -149,9 +187,9 @@ def snacks():
     eRoll = ["egg", "flour", "baking powder", "margarine", "flavour", "salt", "sugar", "groundnut oil"]
     dnurt = ["flour", "yeast", "warm water", "salt", "sugar", "groundnut oil", "margarine", "milk", "egg"]
     mPie = ["flour", "baking powder", "salt", "margarine", "meat", "butter", "egg", "beef", "onions", "potato", "carrot", "spices"]
-    for idx, snack in enumerate(snacksList):
-        print(idx,snack)
-    snacksChoice = str(input("which of the snacks above do you wish to prepare?: ").upper)
+    for snack in snacksList:
+        print(snack)
+    snacksChoice = str(input("which of the snacks above do you wish to prepare?: ").upper())
     if snacksChoice in snacksList:
         if snacksChoice == "EGGROLL":
             recipe1 = str(input("give me one(1) main ingrdients to prepare it: ").lower())
@@ -160,12 +198,11 @@ def snacks():
                 score = +1
             else:
                 playerList.append(recipe1)
-                score += 0
+                score = +0
             recipe2 = str(input("give me another main ingredient to prepare it: ").lower())
             if recipe2 in eRoll and recipe2 not in playerList:
                 playerList.append(recipe2)
                 score += 1
-                print (score)
             else:
                 playerList.append(recipe2)
                 score += 0 
@@ -193,14 +230,14 @@ def snacks():
                 score += 0 
                 winORlose(score)
 #list for doughnut recipe
-        if snacksChoice == "DOUGHNUT":
+        elif snacksChoice == "DOUGHNUT":
             recipe1 = str(input("give me one(1) main ingredient to prepare it: ").lower())
             if recipe1 in dnurt:
                 playerList.append(recipe1)
                 score = +1
             else:
                 playerList.append(recipe1)
-                score += 0
+                score = +0
             recipe2 = str(input("give me another main ingredient to prepare it: ").lower())
             if recipe2 in dnurt and recipe2 not in playerList:
                 playerList.append(recipe2)
@@ -230,7 +267,7 @@ def snacks():
             else:
                 playerList.append(recipe5)
                 score += 0 
-                winORlose()
+                winORlose(score)
 #list for meat pie ingredient
         else:
             recipe1 = str(input("give me one(1) main ingredient to prepare it: ").lower())
@@ -239,7 +276,7 @@ def snacks():
                 score = +1
             else:
                 playerList.append(recipe1)
-                score += 0
+                score = +0
             recipe2 = str(input("give me another main ingredient to prepare it: ").lower())
             if recipe2 in mPie and recipe2 not in playerList:
                 playerList.append(recipe2)
@@ -265,33 +302,40 @@ def snacks():
             if recipe5 in mPie and recipe5 not in playerList:
                 playerList.append(recipe5)
                 score += 1
-                winORlose()
+                winORlose(score)
             else:
                 playerList.append(recipe5)
                 score += 0 
-                winORlose()
-    else: #validation check in concordance to food list
+                winORlose(score)
+    else: #input check 
         print("please input a snacks from the list displayed")
         snacks()
         
 #ACCESS OR DENIAL TO STORE
 def winORlose(score):
     print ("you got ",score," correctly")
-    print ("here is your list: ",playerList)
+    print ("here is the list of the ingredients you typed: ",playerList)
     if score >= 3:
-        print("CONGRATULATIONS, CHEF " + str(name).upper() + " YOU CAN HAVE THE KEY AND START COOKING")
+        time.sleep(1)
+        print("CONGRATULATIONS, CHEF " + str(name).upper() + " YOU NOW HAVE ACCESS TO ALL YOU NEED IN THE KITCHEN")
     else:
-        print("I'm sorry, you need to learn more to access the food store.")
+        time.sleep(2)
+        print("SORRY, YOU NEED TO LEARN MORE TO COOK IN THE KITCHEN.")
 
 #PLAYER DECIDING WHAT TO DO IN THE KITCHEN
 def decisionMaking():
-    choice= str(input("What do you want to prepare? FOOD/SNACKS: ").upper)
+    choice= str(input("What do you want to prepare? FOOD/SNACKS: ").upper())
     if choice == "FOOD":
         food()
     elif choice == "SNACKS":
         snacks()
     else:
         print("please input the correct action")
-        decisionMaking() 
+        decisionMaking()
+    
+#WHILE LOOP
+playagain = "yes"
+while playagain == "yes" or playagain == "y":
 
-decisionMaking()   
+    decisionMaking()
+    playagain = input("Do you want to play again? (yes or y to continue playing): ").lower()

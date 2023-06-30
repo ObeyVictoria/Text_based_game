@@ -10,10 +10,12 @@ Dos and Don't of the GAME
 2. A player is not allowed to repeat an ingredient otherwise zero score is awarded.
 
 HOW TO PLAY
-step 1: Enter your game name as required.
-step 2: Type what you wish to prepare, food or snacks.
-step 3: Type the name of the food/snacks you wish to prepare from the list displayed to you.
-step 4: You have the opportunity to input 5 ingredients for what you choose to prepare.
+step 1: Click on the play song if you're interested in background music.
+step 2: Click the exit button to take you to the game screen.
+step 3: Enter your game name as required.
+step 4: Type what you wish to prepare, food or snacks.
+step 5: Type the name of the food/snacks you wish to prepare from the list displayed to you.
+step 6: You have the opportunity to input 5 ingredients for what you choose to prepare.
 
 
 
